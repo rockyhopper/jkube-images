@@ -4,7 +4,7 @@ on:
   pull_request:
   push:
     branches:
-      - main
+      - feature/java-17-minimal
 
 env:
   TAG: latest
@@ -16,9 +16,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        image: [
-          'jkube-java-17'
-        ]
+        image: 'jkube-java-17'        
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -26,8 +24,8 @@ jobs:
         uses: cekit/actions-setup-cekit@v1.1.5
       - name: Build ${{ matrix.image }}
         run: |
-          echo "Building quay.io/jkube/${{ matrix.image }}:${TAG}"
-          cekit --descriptor ${{ matrix.image }}.yaml build docker --tag="quay.io/jkube/${{ matrix.image }}:${TAG}"
+          echo "Building rockhopper.org/jkube/${{ matrix.image }}:${TAG}"
+          cekit --descriptor ${{ matrix.image }}.yaml build docker --tag="rockhopper.org/jkube/${{ matrix.image }}:${TAG}"
       - name: Test
         if: success()
         run: |
