@@ -53,8 +53,6 @@ modules:
       version: jkube-0.20.0
     - name: jboss.container.util.logging.bash
     - name: jboss.container.java.jvm.bash.debug-options-override
-      # Removes any other Java JDK that might have been downloaded by other packages (run last)
-    - name: org.eclipse.jkube.jvm.singleton-jdk
 
 run:
   user: 1000
